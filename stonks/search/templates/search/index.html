@@ -1,0 +1,22 @@
+{% extends 'search/base.html' %}
+
+{% block title %} Stonks seach {% endblock %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <form action="#" method="post">
+            {% csrf_token %}
+            <input type="search" class="form-control" placeholder="Type here">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    
+{% endblock %}
+
+
