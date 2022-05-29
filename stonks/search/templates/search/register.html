@@ -6,12 +6,12 @@
     <div class="container">
         <form method="POST">
             {% csrf_token  %}
-            {{ form }}
+            {{ form.as_p }}
             <button class="btn btn-outline-info" type="submit">Sing Up</button>
         </form>
         <div class="border-top mt-3">
             <small class="text-muted">
-                Already have an account? <a href="#" class="ml-2">Sign In</a>
+                Already have an account? <a href="{% url 'login' %}" class="ml-2">Sign In</a>
             </small>
         </div>
     </div>
