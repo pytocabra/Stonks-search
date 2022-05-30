@@ -7,14 +7,16 @@ from .forms import UserRegisterForm
 
 
 def index(request):
+    """The main view with a search bar."""
     if request.method == 'POST':
-        ticker = request.POST.get('search')
+        ticker = request.POST.get('search')  # get value of the search bar
         if ticker:
             return redirect('detail', ticker=str(ticker))
     return render(request, 'search/index.html')
 
 
 def detail(request, ticker):
+    """The detail view with a chart and news."""
     # TODO: logic to handle yahoo api and pass data to context
     context = {
         'ticker': ticker,
@@ -36,6 +38,7 @@ def register(request):
 
 @login_required
 def liked(request):
+    """The view with liked stocks. Only for logged in users."""
     context = {
         'objects': Like.objects.filter(author=request.user.pk)
     }

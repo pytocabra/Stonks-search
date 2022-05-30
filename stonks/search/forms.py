@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-# modify user register form to have email field
+# modified user register form to require email
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
