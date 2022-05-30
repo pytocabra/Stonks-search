@@ -2,7 +2,7 @@
 
 1. Git clone
 2. Od tego momentu z terminala
-3. Tworzymy wirtualkę w katalogu ```py -m venv venv``` (może chwilę zająć)
+3. Tworzymy wirtualkę w katalogu z repo ```py -m venv venv``` (może chwilę zająć)
 4. Aktywujemy wirtualkę ```venv\Scripts\activate```
 5. Instalujemy pakiery na wirtualce ```pip install -r requirements.txt```
 6. ```cd stonks```
