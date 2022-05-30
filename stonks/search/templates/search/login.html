@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="container">
+        <h2>Please log in</h2>
         <form method="POST">
             {% csrf_token  %}
             {{ form.as_p }}

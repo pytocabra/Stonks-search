@@ -25,9 +25,9 @@
         {% endfor %}
     {% endif %}
     <div class="container">
-        <form action="#" method="post">
+        <form method="POST">
             {% csrf_token %}
-            <input type="search" class="form-control" placeholder="Type here">
+            <input type="search" name="search" class="form-control" placeholder="Type here">
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>

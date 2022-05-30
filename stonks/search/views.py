@@ -7,7 +7,19 @@ from .forms import UserRegisterForm
 
 
 def index(request):
-    return render(request, 'search/index.html', {})
+    if request.method == 'POST':
+        ticker = request.POST.get('search')
+        if ticker:
+            return redirect('detail', ticker=str(ticker))
+    return render(request, 'search/index.html')
+
+
+def detail(request, ticker):
+    # TODO: logic to handle yahoo api and pass data to context
+    context = {
+        'ticker': ticker,
+    }
+    return render(request, 'search/detail.html', context)
 
 
 def register(request):
