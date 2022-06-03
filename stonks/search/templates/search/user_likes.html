@@ -1,0 +1,12 @@
+{% extends 'search/base.html' %}
+
+{% block body %}
+    <div class="container">
+        {% for object in objects %}
+            <h2>{{ object.company_name }}</h2><br>
+            {{ object.ticker }}<br>
+            
+            {{ object.date_liked }}
+        {% endfor %}
+    </div>
+{% endblock %}
