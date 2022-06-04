@@ -53,4 +53,4 @@ def get_data_for_ticker(ticker_name):
         return None, None, None, None
 
 if __name__ == "__main__":
-    d1, d2, d3, news = get_data_for_ticker("DUPA")
+    d1, d2, d3, news = get_data_for_ticker("AAPL")
