@@ -26,12 +26,18 @@ def index(request):
 def detail(request, ticker):
     """The detail view with a chart and news."""
     # TODO: logic to handle yahoo api and pass data to context
+    ticker_name = [symbol[0] for symbol in StockTickerData.objects.filter(longName__contains=ticker).values_list("symbol")]
 
-    data_for_year, data_for_quarter, data_for_month, news = get_data_for_ticker(ticker)
-    # context = {
-    #     'ticker': ticker,
-    # }
-    return render(request, 'search/detail.html', data_for_year, data_for_quarter, data_for_month, news)
+    data_for_max, data_for_quarter, data_for_month, news = get_data_for_ticker(ticker_name[0])
+    context = {
+        'ticker': ticker_name[0],
+        'longName': ticker,
+        'data_max': data_for_max,
+        'data_for_quarter': data_for_quarter,
+        'data_for_month': data_for_month,
+        'news': news
+    }
+    return render(request, 'search/detail.html', context)
 
 
 def register(request):
