@@ -107,7 +107,13 @@ nav {
 
 .login-wrapper {
     text-align: center;
-    margin: 100px auto 0;
+    margin: 60px auto 9rem;
+    ul {
+        display: none;
+        &.errorlist {
+            display: block;
+        }
+    }
     .errorlist {
         list-style: none;
         color: $red;
@@ -124,12 +130,20 @@ nav {
     }
     .btn {
         width: 100%;
+        padding: 10px;
+    }
+    .helptext {
+        font-size: 11px;
+    }
+    p {
+        margin-bottom: 2rem;
     }
 }
 
 .bottom-wrapper {
     text-align: center;
-    position: absolute;
+    background-color: $white;
+    position: fixed;
     bottom: 0;
     width: 100%;
     padding: 20px 0;
@@ -144,6 +158,6 @@ nav {
         position: absolute;
     }
     .login-wrapper {
-        max-width: 30%;
+        max-width: 380px;
     }
 }
