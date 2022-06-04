@@ -23,4 +23,4 @@ class StockTickerData(models.Model):
     updateDate = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str("Ticker {}, on market {}.".format(self.symbol, self.market))
+        return str("{} {}.".format(self.symbol, self.longName))

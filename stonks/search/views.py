@@ -1,18 +1,25 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
-from .models import Like
+from .models import Like,StockTickerData
 from .forms import UserRegisterForm
 
+from .update_ticker_database import update_tickers_in_database, clear_table
 
 def index(request):
     """The main view with a search bar."""
+
+    # clear_table()
+    # update_tickers_in_database()
+
+    companies = StockTickerData.objects.values_list("longName")
+    companies = [company[0] for company in companies]
+
     if request.method == 'POST':
         ticker = request.POST.get('search')  # get value of the search bar
         if ticker:
             return redirect('detail', ticker=str(ticker))
-    return render(request, 'search/index.html')
+    return render(request, 'search/index.html', {"companies": companies})
 
 
 def detail(request, ticker):
@@ -43,4 +50,5 @@ def liked(request):
         'objects': Like.objects.filter(author=request.user.pk)
     }
     return render(request, 'search/user_likes.html', context)
+
 
