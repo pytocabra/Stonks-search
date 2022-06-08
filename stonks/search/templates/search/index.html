@@ -27,7 +27,18 @@
             </form>
         </div>
     </main>
-    
+
+    <script>
+        $( function() {
+          var availableTags = [
+          {% for company in companies %}
+              "{{company}}",
+          {% endfor %}
+          ];
+          $( "#tags" ).autocomplete({
+              source: availableTags
+          });
+        } );
+    </script>
+
 {% endblock %}
-
-

@@ -122,7 +122,6 @@ STATIC_URL = '/static/'
 SASS_PROCESSOR_ROOT = STATIC_URL + 'styles/'
 COMPRESS_ROOT = SASS_PROCESSOR_ROOT
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

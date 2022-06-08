@@ -1,4 +1,5 @@
 asgiref==3.5.0
+backports.zoneinfo==0.2.1
 Django==4.0.4
 numpy==1.22.3
 pandas==1.4.2
@@ -11,3 +12,5 @@ tzdata==2022.1
 yahoo-finance==1.4.0
 django-compressor==4.0
 django-sass-processor==1.1
+stocksymbol==0.0.5
+yfinance==0.1.70
