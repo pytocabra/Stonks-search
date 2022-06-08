@@ -12,7 +12,7 @@ nav {
 
 .navbar .nav-link {
   font-weight: 500;
-  color: #fff;
+  color: #fff !important;
   font-size: 16px;
   padding: 8px 16px;
   margin: 12px 8px;
