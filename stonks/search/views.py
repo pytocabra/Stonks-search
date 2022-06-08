@@ -28,14 +28,17 @@ def detail(request, ticker):
     # TODO: logic to handle yahoo api and pass data to context
     ticker_name = [symbol[0] for symbol in StockTickerData.objects.filter(longName__contains=ticker).values_list("symbol")]
 
-    data_for_max, data_for_quarter, data_for_month, news = get_data_for_ticker(ticker_name[0])
+    data_for_max, data_for_quarter, data_for_month, news, info, holders, calendar = get_data_for_ticker(ticker_name[0])
     context = {
         'ticker': ticker_name[0],
         'longName': ticker,
         'data_max': data_for_max,
         'data_for_quarter': data_for_quarter,
         'data_for_month': data_for_month,
-        'news': news
+        'news': news,
+        'info': info,
+        'holders': holders,
+        'calendar': calendar
     }
     return render(request, 'search/detail.html', context)
 

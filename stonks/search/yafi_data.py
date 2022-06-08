@@ -44,13 +44,15 @@ def get_data_for_ticker(ticker_name):
         proxy=None
     )
 
-    news = yafi.Ticker(ticker_name).news
-
-
+    yafi_ticker = yafi.Ticker(ticker_name)
+    news = yafi_ticker.news
+    info = yafi_ticker.info
+    institutional_holders = yafi_ticker.institutional_holders
+    calendar = yafi_ticker.calendar
     if not (data_for_max.empty & data_for_month.empty & data_for_quarter.empty):
-        return data_for_max.to_json(), data_for_quarter.to_json(), data_for_month.to_json(), news
+        return data_for_max.to_json(), data_for_quarter.to_json(), data_for_month.to_json(), news, info, institutional_holders, calendar
     else:
-        return None, None, None, None
+        return None, None, None, None, None, None, None
 
 if __name__ == "__main__":
-    d1, d2, d3, news = get_data_for_ticker("AAPL")
+    d1, d2, d3, news, info, holders, calendar = get_data_for_ticker("AAPL")
