@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'search'
+    'search',
+    # other apps
+    'sass_processor'
 ]
 
 MIDDLEWARE = [
@@ -116,7 +118,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+SASS_PROCESSOR_ROOT = STATIC_URL + 'styles/'
+COMPRESS_ROOT = SASS_PROCESSOR_ROOT
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

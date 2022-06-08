@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap");
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: #fff; }
+  body.welcome {
+    background-color: #000; }
+    body.welcome .navbar {
+      background: transparent !important; }
+
+nav {
+  z-index: 99; }
+
+.navbar .nav-link {
+  font-weight: 500;
+  color: #fff !important;
+  font-size: 16px;
+  padding: 8px 16px;
+  margin: 12px 8px;
+  border-radius: 36px; }
+  .navbar .nav-link:hover {
+    background-color: #fff3; }
+.navbar .navbar-brand {
+  font-weight: 700;
+  color: #fff; }
+
+.welcome-screen {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .welcome-screen:before {
+    content: '';
+    background-image: url("../assets/main-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .65;
+    z-index: -1; }
+  .welcome-screen .main-search__inner {
+    max-width: 50%;
+    position: relative; }
+  .welcome-screen .main-search input {
+    font-size: 28px;
+    padding: 16px 40px 16px 85px;
+    border: 0;
+    width: 100%;
+    border-radius: 36px; }
+    .welcome-screen .main-search input:focus {
+      box-shadow: none; }
+  .welcome-screen .main-search .btn {
+    background-color: #2962ff;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .welcome-screen .main-search .btn svg path {
+      fill: #fff; }
+  .welcome-screen h1 {
+    font-weight: 700;
+    font-size: 70px;
+    max-width: 50%;
+    color: #fff;
+    margin-left: 15px;
+    margin-bottom: 30px; }
+
+.login-wrapper {
+  text-align: center;
+  margin: 60px auto 9rem; }
+  .login-wrapper ul {
+    display: none; }
+    .login-wrapper ul.errorlist {
+      display: block; }
+  .login-wrapper .errorlist {
+    list-style: none;
+    color: #dc3545; }
+  .login-wrapper input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #777;
+    transition: 0.25s ease-in; }
+    .login-wrapper input:focus {
+      outline: none;
+      border-color: #2962ff; }
+  .login-wrapper .btn {
+    width: 100%;
+    padding: 10px; }
+  .login-wrapper .helptext {
+    font-size: 11px; }
+  .login-wrapper p {
+    margin-bottom: 2rem; }
+
+.bottom-wrapper {
+  text-align: center;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0; }
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end; }
+
+  .navbar-brand {
+    font-size: 35px;
+    position: absolute; }
+
+  .login-wrapper {
+    max-width: 380px; } }
+
+/*# sourceMappingURL=custom.css.map */

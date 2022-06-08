@@ -7,6 +7,7 @@ from .forms import UserRegisterForm
 from .update_ticker_database import update_tickers_in_database, clear_table
 from .yafi_data import get_data_for_ticker
 
+
 def index(request):
     """The main view with a search bar."""
 

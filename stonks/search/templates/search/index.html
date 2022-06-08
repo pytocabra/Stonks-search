@@ -1,51 +1,44 @@
 {% extends 'search/base.html' %}
 
-{% block title %} Stonks seach {% endblock %}
+{% block title %}Stonks search{% endblock %}
 
-{% block head %}
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
-
-{% endblock %}
-
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-        </div>    
-    {% endfor %}
-{% endif %}
+{% block bodyclass %}welcome{% endblock %}
 
 {% block body %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>    
-        {% endfor %}
-    {% endif %}
-    <div class="container">
-        <form method="POST">
-            {% csrf_token %}
-            <input type="search" name="search" class="form-control" placeholder="Type here" id="tags">
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-    </div>
+
+    <main class="welcome-screen">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="container">
+            <h1>Start investing with just one search</h1>
+            <form class="main-search" method="POST">
+                {% csrf_token %}
+                <div class="main-search__inner">
+                    <input type="search" name="search" class="form-control" placeholder="Search...">
+                    <button type="submit" class="btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="currentColor" d="M13.5 7.5a6 6 0 1 0-12 0 6 6 0 0 0 12 0zm-1.25 5.8a7.5 7.5 0 1 1 1.06-1.06l4.22 4.23a.75.75 0 1 1-1.06 1.06l-4.22-4.22z"></path></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
     <script>
-      $( function() {
-        var availableTags = [
-        {% for company in companies %}
-            "{{company}}",
-        {% endfor %}
-        ];
-        $( "#tags" ).autocomplete({
-            source: availableTags
-        });
-      } );
+        $( function() {
+          var availableTags = [
+          {% for company in companies %}
+              "{{company}}",
+          {% endfor %}
+          ];
+          $( "#tags" ).autocomplete({
+              source: availableTags
+          });
+        } );
     </script>
+
 {% endblock %}
-
-
