@@ -44,13 +44,20 @@ def get_data_for_ticker(ticker_name):
         proxy=None
     )
 
-    news = yafi.Ticker(ticker_name).news
+    yafi_ticker = yafi.Ticker(ticker_name)
+    news = yafi_ticker.news
+    info = yafi_ticker.info
+    institutional_holders = yafi_ticker.institutional_holders
+    list_of_ticker_data = [data_for_max.to_json(), data_for_quarter.to_json(),
+                           data_for_month.to_json(), news, info,
+                           institutional_holders]
 
-
+    #TODO: Do we draw plot if no news/info etc is available?
     if not (data_for_max.empty & data_for_month.empty & data_for_quarter.empty):
-        return data_for_max.to_json(), data_for_quarter.to_json(), data_for_month.to_json(), news
+        return list_of_ticker_data
     else:
-        return None, None, None, None
+        return None
+
 
 if __name__ == "__main__":
-    d1, d2, d3, news = get_data_for_ticker("AAPL")
+    dane = get_data_for_ticker("AAPL")

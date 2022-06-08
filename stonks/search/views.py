@@ -77,3 +77,4 @@ def error(request, ticker="Hejka!"):
         'error_message': error_message
     }
     return render(request, 'search/error.html', context)
+
