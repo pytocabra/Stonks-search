@@ -1,14 +1,16 @@
 {% extends 'search/base.html' %}
 
-{% block title %} Register {% endblock %}
+{% block title %}Logout{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h2>You have been logged out</h2>
-        <div class="border-top mt-3">
-            <small class="text-muted">
-                <a href="{% url 'login' %}">Log In Again</a>
-            </small>
+        <div class="login-wrapper">
+            <h2>You have been logged out</h2>
         </div>
+    </div>
+    <div class="bottom-wrapper border-top">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In Again</a>
+        </small>
     </div>
 {% endblock %}
