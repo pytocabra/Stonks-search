@@ -10,5 +10,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='search/logout.html'), name='logout'),
     path('stock/<str:ticker>/error/', views.error, name="error"),
     path('stock/<str:ticker>/', views.detail, name='detail'),
-    path('liked/', views.liked, name='liked')
+    path('liked/', views.liked, name='liked'),
+    path('add/<str:ticker>/', views.like_stock, name='add'),
+    path('delete/<str:ticker>/', views.delete_stock, name='delete')
 ]

@@ -277,4 +277,8 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     </script>
+
+    <a href="{% url 'add' ticker=ticker %}">dodaj</a>
+    <a href="{% url 'delete' ticker=ticker %}">usun</a>
+ 
 {% endblock %}

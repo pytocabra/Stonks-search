@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
+from django.contrib.auth.models import User
 from .models import Like, StockTickerData
 from .forms import UserRegisterForm
 
@@ -26,7 +29,6 @@ def index(request):
 
 def detail(request, ticker):
     """The detail view with a chart and news."""
-    # TODO: logic to handle yahoo api and pass data to context
     ticker_name = [symbol[0] for symbol in StockTickerData.objects.filter(longName__contains=ticker).values_list("symbol")]
     if ticker_name:
         list_of_ticker_data = get_data_for_ticker(ticker_name[0])
@@ -78,3 +80,25 @@ def error(request, ticker="Hejka!"):
     }
     return render(request, 'search/error.html', context)
 
+
+@login_required
+def like_stock(request, ticker):
+    #if request.method == "POST":
+    ticker=ticker.upper()
+    object = StockTickerData.objects.filter(symbol=ticker).values()[0]
+    Like(
+        ticker=ticker, 
+        company_name=object['longName'],
+        author=User.objects.get(username=request.user.username)
+        ).save()
+    return redirect('liked')
+
+
+@login_required
+def delete_stock(request, ticker):
+    #if request.method == "POST":
+    ticker=ticker.upper()
+    Like.objects.filter(
+        ticker=ticker, 
+        author__username=request.user.username).delete()
+    return redirect('liked')
