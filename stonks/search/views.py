@@ -44,6 +44,10 @@ def detail(request, ticker):
             'news': list_of_ticker_data[3],
             'info': list_of_ticker_data[4],
             'holders': list_of_ticker_data[5],
+            'data_for_max_close_only': list_of_ticker_data[6],
+            'data_for_quarter_close_only': list_of_ticker_data[7],
+            'data_for_month_close_only': list_of_ticker_data[8],
+            'like': None
         }
         return render(request, 'search/detail.html', context)
 
@@ -69,7 +73,7 @@ def liked(request):
     return render(request, 'search/user_likes.html', context)
 
 
-def error(request, ticker="Hejka!"):
+def error(request, ticker):
     error_message = "Sorry! No data for given ticker!"
     context = {
         'ticker': ticker,
