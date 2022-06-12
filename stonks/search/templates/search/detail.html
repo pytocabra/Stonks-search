@@ -4,10 +4,58 @@
 {% block body %}
     <div class="container">
         <div class="detailScreen">
-            <h1 class="detailScreen__title">{{ ticker }}</h1>
-            <h2 class="detailScreen__subtitle">{{ longName }}</h2>
-            <p class="detailScreen__description">{{ info.longBusinessSummary }}</p>
-            <div class="detailScreen__chart" id="chart"></div>
+            <h1 class="detailScreen__title">{{ longName }}</h1>
+
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#home" data-bs-toggle="tab">Charts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#menu1" data-bs-toggle="tab">Summary</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#menu2" data-bs-toggle="tab">Holders</a>
+              </li>
+            </ul>
+            
+            <div class="tab-content">
+              <div id="home" class="tab-pane fade show active">
+                <div class="detailScreen__chart" id="chart"></div>
+              </div>
+
+              <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Some content in menu 1.</p>
+              </div>
+
+              <div id="menu2" class="tab-pane fade">
+                <!--
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Holder</th>
+                      <th>Shares</th>
+                      <th>Date Reported</th>
+                      <th>% Shares</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for result in holders %}
+                    <tr>
+                      <th> {{ result.Holder }}</th>
+                      <th> {{ result.Shares }}</th>
+
+                    </tr> 
+                    {% endfor %}
+                  </tbody>
+                  
+                </table>
+                -->
+              </div>
+
+            </div>
+
+            
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
