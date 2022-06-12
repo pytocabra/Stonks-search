@@ -149,6 +149,33 @@ nav {
     padding: 20px 0;
 }
 
+.ui-autocomplete {
+    border-radius: 20px !important;
+    background: $white !important;
+    max-height: 150px;
+    overflow-y: scroll;
+    max-width: 45%;
+    border: none !important;
+    a {
+        transition: all 0.25s ease-in;
+        cursor: pointer;
+        &.ui-state-hover {
+            color: $blue;
+            background: $white;
+            border: none;
+        }
+    }
+}
+
+.detailScreen {
+    &__title {
+
+    }
+    &__subtitle {
+        font-size: 25px;
+    }
+}
+
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         justify-content: flex-end;

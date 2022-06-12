@@ -9,6 +9,7 @@ def format_for_graph(dataframe):
     dataframe.index = dataframe.index.astype(int) // 10 ** 9
     dataframe_to_dict_with_arrays = dataframe.T.to_dict('list')
     dataframe_to_json = pd.DataFrame.from_dict(dataframe_to_dict_with_arrays)
+    dataframe_to_json = dataframe_to_json.to_json()
     return dataframe_to_json
 
 def get_data_for_ticker(ticker_name):
