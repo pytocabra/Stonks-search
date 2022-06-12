@@ -169,10 +169,26 @@ nav {
 
 .detailScreen {
     &__title {
-
+        margin-bottom: 30px;
     }
-    &__subtitle {
-        font-size: 25px;
+    .nav-tabs {
+        margin-bottom: 20px;
+    }
+    &__topWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .like-icon {
+            width: 35px;
+            height: 35px;
+            transition: all 0.25s ease-in;
+            &:hover {
+                fill: $red;
+            }
+            &__liked {
+                fill: $red;
+            }
+        }
     }
 }
 

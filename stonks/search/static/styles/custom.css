@@ -127,8 +127,22 @@ nav {
       background: #fff;
       border: none; }
 
-.detailScreen__subtitle {
-  font-size: 25px; }
+.detailScreen__title {
+  margin-bottom: 30px; }
+.detailScreen .nav-tabs {
+  margin-bottom: 20px; }
+.detailScreen__topWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .detailScreen__topWrapper .like-icon {
+    width: 35px;
+    height: 35px;
+    transition: all 0.25s ease-in; }
+    .detailScreen__topWrapper .like-icon:hover {
+      fill: #dc3545; }
+    .detailScreen__topWrapper .like-icon__liked {
+      fill: #dc3545; }
 
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-collapse {
