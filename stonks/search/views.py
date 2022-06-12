@@ -29,15 +29,10 @@ def index(request):
 
 def detail(request, ticker):
     """The detail view with a chart and news."""
-    ticker_name = [symbol[0] for symbol in StockTickerData.objects.filter(longName__contains=ticker).values_list("symbol")]
+    ticker_name = [symbol[0] for symbol in StockTickerData.objects.filter(longName=ticker).values_list("symbol")]
     if ticker_name:
         list_of_ticker_data = get_data_for_ticker(ticker_name[0])
-        try:
-            is_liked = bool(Like.objects.filter(ticker__contains=ticker_name[0]).values_list("ticker")[0])
-            print(is_liked)
-        except:
-            is_liked = False
-            print(is_liked)
+        is_liked = Like.objects.filter(ticker__contains=ticker_name[0]).exists()
     else:
         list_of_ticker_data = [None]
     if all(element is None for element in list_of_ticker_data):
