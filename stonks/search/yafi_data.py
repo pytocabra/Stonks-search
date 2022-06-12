@@ -6,7 +6,6 @@ import numpy as np
 def format_for_graph(dataframe):
     del(dataframe['Volume'])
     dataframe.loc[:, ["Open", "High", "Low", "Close"]]
-    print(dataframe.head())
     dataframe.index = dataframe.index.astype(int) // 10 ** 9
     dataframe_to_dict_with_arrays = dataframe.T.to_dict('list')
     dataframe_to_json = pd.DataFrame.from_dict(dataframe_to_dict_with_arrays)
