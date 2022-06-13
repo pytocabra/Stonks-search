@@ -25,7 +25,7 @@ def get_data_for_ticker(ticker_name):
     """
     data_for_max = yafi.download(
         tickers=ticker_name,
-        period="max",
+        period="1y",
         interval="1d",
         group_by='ticker',
         auto_adjust=True,

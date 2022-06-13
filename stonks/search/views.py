@@ -10,13 +10,11 @@ from .forms import UserRegisterForm
 from .update_ticker_database import update_tickers_in_database, clear_table
 from .yafi_data import get_data_for_ticker
 
+import json
+
 
 def index(request):
     """The main view with a search bar."""
-
-    # clear_table()
-    # update_tickers_in_database()
-
     companies = StockTickerData.objects.values_list("longName")
     companies = [company[0] for company in companies]
 
@@ -39,17 +37,17 @@ def detail(request, ticker):
     else:
         list_of_ticker_data = [None]
 
-    print(is_liked)
     if all(element is None for element in list_of_ticker_data):
         return redirect('error', ticker=str(ticker))
     else:
+        list_of_ticker_data[5].rename(columns = {'Date Reported':'DateReported', '% Out':'Out'}, inplace = True)
         context = {
             'ticker': ticker_name[0],
             'longName': ticker,
             'data_max': list_of_ticker_data[0],
             'news': list_of_ticker_data[3],
             'info': list_of_ticker_data[4],
-            'holders': list_of_ticker_data[5],
+            'holders': json.loads(list_of_ticker_data[5].reset_index().to_json(orient ='records')),
             'data_for_max_close_only': list_of_ticker_data[6],
             'liked': is_liked
         }

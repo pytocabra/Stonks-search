@@ -58,33 +58,98 @@
               </div>
 
               <div id="menu1" class="tab-pane fade">
-                <h3>Menu 1</h3>
-                <p>Some content in menu 1.</p>
+                <table class="table">
+                  <tbody>
+                    <tr scope="row">
+                      <th>Previous Close</th>
+                      <th> {{ info.previousClose  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Open</th>
+                      <th> {{ info.open  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Bid</th>
+                      <th> {{ info.bid  }} x {{ info.bidSize  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Ask</th>
+                      <th> {{ info.ask  }} x {{ info.askSize  }}</th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Day Range</th>
+                      <th> {{ info.dayLow  }} - {{ info.dayHigh  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Volume</th>
+                      <th> {{ info.volume  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Average Volume</th>
+                      <th> {{ info.averageVolume  }}</th>
+                    </tr> 
+                  </tbody>
+                </table>
+
+                <table class="table">
+                  <tbody>
+                    <tr scope="row">
+                      <th>Market Cap</th>
+                      <th> {{ info.marketCap  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Short Percent Of Float</th>
+                      <th> {{ info.shortPercentOfFloat }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Price/Ernings</th>
+                      <th> {{ info.forwardPE  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Ernings Per Share</th>
+                      <th> {{ info.forwardEps  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Book Value</th>
+                      <th> {{ info.bookValue  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Last Split Ratio</th>
+                      <th> {{ info.lastSplitFactor  }} </th>
+                    </tr> 
+                    <tr scope="row">
+                      <th>Website</th>
+                      <th> {{ info.website  }} </th>
+                    </tr> 
+                  </tbody>
+                </table>
               </div>
 
               <div id="menu2" class="tab-pane fade">
-                <!--
-                <table>
+
+                <table class="table">
                   <thead>
                     <tr>
-                      <th>Holder</th>
-                      <th>Shares</th>
-                      <th>Date Reported</th>
-                      <th>% Shares</th>
+                      <th scope="col">Holder</th>
+                      <th scope="col">Shares</th>
+                      <th scope="col">Date Reported</th>
+                      <th scope="col">% Shares</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for result in holders %}
-                    <tr>
-                      <th> {{ result.Holder }}</th>
-                      <th> {{ result.Shares }}</th>
+                    <tr scope="row">
+                      <th> {{ result.Holder }} </th>
+                      <th> {{ result.Shares }} </th>
+                      <th> {{ result.DateReported }} </th>
+                      <th> {{ result.Out }} </th>
 
                     </tr> 
                     {% endfor %}
                   </tbody>
                   
                 </table>
-                -->
+
               </div>
 
             </div>
