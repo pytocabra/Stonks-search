@@ -144,6 +144,16 @@ nav {
     .detailScreen__topWrapper .like-icon__liked {
       fill: #dc3545; }
 
+.liked .card {
+  transition: all 0.25s ease-in;
+  min-height: 160px; }
+.liked__blockLink {
+  color: #000;
+  transition: all 0.25s ease-in;
+  text-decoration: none; }
+  .liked__blockLink:hover > .card {
+    transform: translateY(-6%); }
+
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end; }

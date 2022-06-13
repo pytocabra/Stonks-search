@@ -2,20 +2,24 @@
 
 {% block body %}
     {% if objects %}
+        <main class="liked">
         <div class="container">
-            <div class="row mt-4 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+            <div class="row mt-4">
             {% for object in objects %}
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                        <h4 class="card-title">{{ object.company_name }}</h4>
-                        <p class="card-text">{{ object.ticker }} <br> {{ object.date_liked }}</p>
+                <div class="col mb-4 col-md-6 col-lg-4 col-xl-3">
+                    <a class="liked__blockLink" href="{% url 'detail' ticker=object.company_name %}">
+                        <div class="card">
+                            <div class="card-body">
+                            <h4 class="card-title">{{ object.company_name }}</h4>
+                            <p class="card-text">{{ object.ticker }} <br> {{ object.date_liked }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
             </div>
         </div>
+        </main>
     {% endif %}
 
     {% if not objects %}

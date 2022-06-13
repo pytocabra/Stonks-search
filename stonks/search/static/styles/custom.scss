@@ -192,6 +192,23 @@ nav {
     }
 }
 
+.liked {
+    .card {
+        transition: all 0.25s ease-in;
+        min-height: 160px;
+    }
+    &__blockLink {
+        color: $black;
+        transition: all 0.25s ease-in;
+        text-decoration: none;
+        &:hover {
+            >.card {
+                transform: translateY(-6%);
+            }
+        }
+    }
+}
+
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         justify-content: flex-end;
