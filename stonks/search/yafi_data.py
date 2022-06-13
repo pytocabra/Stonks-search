@@ -18,14 +18,10 @@ def get_data_for_ticker(ticker_name):
     :return:
         9 element array containing following data under successive indexes:
             data_for_max_json - json containing stock data [open,close,min,max] for max years with period of 1 day
-            data_for_quarter_json - json containing stock data [open,close,min,max] for 3 months with period of 1 hour
-            data_for_month_json - json containing stock data [open,close,min,max] for 1 month with period of 1 minute
             news - newsfeed for given stock name
             info - various data for given stock
             institutional_holders - list of the biggest institutional holders
             data_for_max_close_only_json - json containing stock close value for max years with period of 1 day
-            data_for_quarter_close_only_json - json containing stock close value for 3 months with period of 1 hour
-            data_for_month_close_only_json - json containing stock close value for 1 month with period of 1 minute
     """
     data_for_max = yafi.download(
         tickers=ticker_name,
@@ -38,35 +34,9 @@ def get_data_for_ticker(ticker_name):
         proxy=None
     )
 
-    data_for_quarter = yafi.download(
-        tickers=ticker_name,
-        period="3m",
-        interval="1h",
-        group_by='ticker',
-        auto_adjust=True,
-        prepost=True,
-        threads=True,
-        proxy=None
-    )
-
-    data_for_month = yafi.download(
-        tickers=ticker_name,
-        period="1m",
-        interval="1m",
-        group_by='ticker',
-        auto_adjust=True,
-        prepost=True,
-        threads=True,
-        proxy=None
-    )
-
     data_for_max_json = format_for_graph(data_for_max)
-    data_for_quarter_json = format_for_graph(data_for_quarter)
-    data_for_month_json = format_for_graph(data_for_month)
 
     data_for_max_close_only_json = data_for_max['Close'].to_json
-    data_for_quarter_close_only_json = data_for_quarter['Close'].to_json
-    data_for_month_close_only_json = data_for_month['Close'].to_json
 
     yafi_ticker = yafi.Ticker(ticker_name)
     news = yafi_ticker.news
@@ -74,16 +44,15 @@ def get_data_for_ticker(ticker_name):
     institutional_holders = yafi_ticker.institutional_holders
 
     list_of_ticker_data = [data_for_max_json,
-                           data_for_quarter_json,
-                           data_for_month_json,
+                           0,
+                           0,
                            news,
                            info,
                            institutional_holders,
                            data_for_max_close_only_json,
-                           data_for_quarter_close_only_json,
-                           data_for_month_close_only_json]
+                           ]
 
-    if not (data_for_max.empty & data_for_month.empty & data_for_quarter.empty):
+    if not (data_for_max.empty):
         return list_of_ticker_data
     else:
         return None

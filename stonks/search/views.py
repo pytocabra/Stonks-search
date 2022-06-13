@@ -32,9 +32,14 @@ def detail(request, ticker):
     ticker_name = [symbol[0] for symbol in StockTickerData.objects.filter(longName=ticker).values_list("symbol")]
     if ticker_name:
         list_of_ticker_data = get_data_for_ticker(ticker_name[0])
-        is_liked = Like.objects.filter(ticker__contains=ticker_name[0]).exists()
+        if request.user.username:
+            is_liked = Like.objects.filter(ticker__contains=ticker_name[0], author__username__contains=request.user.username).exists()
+        else:
+            is_liked = False
     else:
         list_of_ticker_data = [None]
+
+    print(is_liked)
     if all(element is None for element in list_of_ticker_data):
         return redirect('error', ticker=str(ticker))
     else:
@@ -42,14 +47,10 @@ def detail(request, ticker):
             'ticker': ticker_name[0],
             'longName': ticker,
             'data_max': list_of_ticker_data[0],
-            'data_for_quarter': list_of_ticker_data[1],
-            'data_for_month': list_of_ticker_data[2],
             'news': list_of_ticker_data[3],
             'info': list_of_ticker_data[4],
             'holders': list_of_ticker_data[5],
             'data_for_max_close_only': list_of_ticker_data[6],
-            'data_for_quarter_close_only': list_of_ticker_data[7],
-            'data_for_month_close_only': list_of_ticker_data[8],
             'liked': is_liked
         }
         return render(request, 'search/detail.html', context)
