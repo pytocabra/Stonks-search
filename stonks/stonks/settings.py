@@ -119,7 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 import os 
 
-STATIC_ROUTE = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 SASS_PROCESSOR_ROOT = STATIC_URL + 'styles/'
 COMPRESS_ROOT = SASS_PROCESSOR_ROOT
