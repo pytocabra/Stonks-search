@@ -115,8 +115,8 @@ nav {
 .ui-autocomplete {
   border-radius: 20px !important;
   background: #fff !important;
-  max-height: 150px;
-  overflow-y: scroll;
+  max-height: 180px;
+  overflow-y: auto;
   max-width: 45%;
   border: none !important; }
   .ui-autocomplete a {
@@ -143,6 +143,11 @@ nav {
       fill: #dc3545; }
     .detailScreen__topWrapper .like-icon__liked {
       fill: #dc3545; }
+.detailScreen__logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 20px; }
 
 .liked .card {
   transition: all 0.25s ease-in;
