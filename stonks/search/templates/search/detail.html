@@ -4,6 +4,7 @@
 {% block body %}
     <div class="container">
         <div class="detailScreen">
+            <img class="detailScreen__logo" src="{{ info.logo_url }}" />
             <div class="detailScreen__topWrapper">
                 <h1 class="detailScreen__title">{{ longName }}</h1>
 
@@ -180,7 +181,7 @@
             size: 0,
         },
         title: {
-          text: 'CandleStick Chart',
+          text: 'Candle',
           align: 'left'
         },
         xaxis: {

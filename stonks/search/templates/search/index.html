@@ -39,6 +39,10 @@
             source: availableTags
         });
     } );
+
+    $(document).on('click','.ui-autocomplete .ui-menu-item',function(){
+        $('form.main-search').submit()
+    });
 </script>
 
 {% endblock %}

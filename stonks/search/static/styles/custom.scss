@@ -152,8 +152,8 @@ nav {
 .ui-autocomplete {
     border-radius: 20px !important;
     background: $white !important;
-    max-height: 150px;
-    overflow-y: scroll;
+    max-height: 180px;
+    overflow-y: auto;
     max-width: 45%;
     border: none !important;
     a {
@@ -189,6 +189,12 @@ nav {
                 fill: $red;
             }
         }
+    }
+    &__logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+        margin-top: 20px;
     }
 }
 
