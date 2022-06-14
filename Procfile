@@ -1,1 +1,1 @@
-web: gunicorn Stonks-search.wsgi
+web: gunicorn stonks.wsgi
