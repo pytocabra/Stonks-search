@@ -55,7 +55,20 @@
             
             <div class="tab-content">
               <div id="home" class="tab-pane fade show active">
-                <div class="detailScreen__chart" id="chart"></div>
+                  <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#candleChart" data-bs-toggle="tab">Candle</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#lineChart" data-bs-toggle="tab">Line</a>
+                      </li>
+                  </ul>
+                  <div id="candleChart" class="detailScreen__chart tab-pane fade show active">
+                      <div class="detailScreen__chart" id="chart"></div>
+                  </div>
+                  <div id="lineChart" class="detailScreen__chart tab-pane fade">
+                      <div id="chartLine"></div>
+                  </div>
               </div>
 
               <div id="menu1" class="tab-pane fade">
@@ -163,6 +176,9 @@
         let myData = JSON.parse('{{ data_max }}'.replace(/&quot;/g,'"'))
         let values = Object.keys(myData).map(key => ([parseInt(key)*1000, [myData[key][0], myData[key][1], myData[key][2], myData[key][3]]]))
 
+        let dataLine = JSON.parse('{{ data_for_max_close_only }}'.replace(/&quot;/g,'"'))
+        let valuesLine = Object.keys(dataLine).map(key => ([parseInt(key)*1000, dataLine[key]]))
+
         var options = {
           series: [{
           data: values
@@ -204,7 +220,47 @@
         }};
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+
+        var optionsLine = {
+          series: [{
+            data: valuesLine
+        }],
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: true
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Line',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          type: 'datetime',
+        }
+        };
+
+        var chartLine = new ApexCharts(document.querySelector("#chartLine"), optionsLine);
+
+        $(document).ready(function() {
+            chart.render();
+            chartLine.render();
+        });
+
+        
     </script>
 
 {% endblock %}

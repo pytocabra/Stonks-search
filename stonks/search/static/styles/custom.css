@@ -146,8 +146,9 @@ nav {
 .detailScreen__logo {
   width: 100px;
   height: auto;
-  margin-bottom: 10px;
-  margin-top: 20px; }
+  margin-bottom: 10px; }
+.detailScreen__chart {
+  height: 0; }
 
 .liked .card {
   transition: all 0.25s ease-in;

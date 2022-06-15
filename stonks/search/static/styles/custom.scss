@@ -194,7 +194,9 @@ nav {
         width: 100px;
         height: auto;
         margin-bottom: 10px;
-        margin-top: 20px;
+    }
+    &__chart {
+        height: 0;
     }
 }
 
