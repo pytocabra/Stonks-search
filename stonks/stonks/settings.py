@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-yc%dbhzpwf5h*foz8$y#tsq01ezudg^r5p^$fz1+56!w&qm0ba
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['stonksdeploy.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    'stonksdeploy.herokuapp.com', 
+    'stonks-cli.herokuapp.com',
+    '127.0.0.1', 
+    'localhost'
+]
 
 
 # Application definition
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

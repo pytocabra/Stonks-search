@@ -1,0 +1,229 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
+
+// Color Variables
+$blue: #2962ff;
+$white: #fff;
+$black: #000;
+$red: #dc3545;
+
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: $white;
+    &.welcome {
+        background-color: $black;
+        .navbar {
+            background: transparent !important;
+        }
+    }
+}
+
+nav {
+    z-index: 99;
+}
+
+.navbar {
+    .nav-link {
+        font-weight: 500;
+        color: $white !important;
+        font-size: 16px;
+        padding: 8px 16px;
+        margin: 12px 8px;
+        border-radius: 36px;
+        &:hover {
+            background-color: #fff3;
+        }
+    }
+    .navbar-brand {
+        font-weight: 700;
+        color: $white;
+    }
+}
+
+.welcome-screen {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before {
+        content: '';
+        background-image: url("../assets/main-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: .65;
+        z-index: -1;
+    }
+    .main-search {
+        &__inner {
+            max-width: 50%;
+            position: relative;
+        }
+        input {
+            font-size: 28px;
+            padding: 16px 40px 16px 85px;
+            border: 0;
+            width: 100%;
+            border-radius: 36px;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        .btn {
+            background-color: $blue;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg path {
+                fill: $white;
+            }
+        }
+    }
+    h1 {
+        font-weight: 700;
+        font-size: 70px;
+        max-width: 50%;
+        color: $white;
+        margin-left: 15px;
+        margin-bottom: 30px;
+    }
+}
+
+.login-wrapper {
+    text-align: center;
+    margin: 60px auto 9rem;
+    ul {
+        display: none;
+        &.errorlist {
+            display: block;
+        }
+    }
+    .errorlist {
+        list-style: none;
+        color: $red;
+    }
+    input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #777;
+        transition: 0.25s ease-in;
+        &:focus {
+            outline: none;
+            border-color: $blue;
+        }
+    }
+    .btn {
+        width: 100%;
+        padding: 10px;
+    }
+    .helptext {
+        font-size: 11px;
+    }
+    p {
+        margin-bottom: 2rem;
+    }
+}
+
+.bottom-wrapper {
+    text-align: center;
+    background-color: $white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.ui-autocomplete {
+    border-radius: 20px !important;
+    background: $white !important;
+    max-height: 180px;
+    overflow-y: auto;
+    max-width: 45%;
+    border: none !important;
+    a {
+        transition: all 0.25s ease-in;
+        cursor: pointer;
+        &.ui-state-hover {
+            color: $blue;
+            background: $white;
+            border: none;
+        }
+    }
+}
+
+.detailScreen {
+    &__title {
+        margin-bottom: 30px;
+    }
+    .nav-tabs {
+        margin-bottom: 20px;
+    }
+    &__topWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .like-icon {
+            width: 35px;
+            height: 35px;
+            transition: all 0.25s ease-in;
+            &:hover {
+                fill: $red;
+            }
+            &__liked {
+                fill: $red;
+            }
+        }
+    }
+    &__logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+}
+
+.liked {
+    .card {
+        transition: all 0.25s ease-in;
+        min-height: 160px;
+    }
+    &__blockLink {
+        color: $black;
+        transition: all 0.25s ease-in;
+        text-decoration: none;
+        &:hover {
+            >.card {
+                transform: translateY(-6%);
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: flex-end;
+    }
+    .navbar-brand {
+        font-size: 35px;
+        position: absolute;
+    }
+    .login-wrapper {
+        max-width: 380px;
+    }
+}
