@@ -12,11 +12,12 @@ def format_for_graph(dataframe):
     dataframe_to_json = dataframe_to_json.to_json()
     return dataframe_to_json
 
+
 def get_data_for_ticker(ticker_name):
     """
     :param ticker_name: string containing ticker name (symbol)
     :return:
-        9 element array containing following data under successive indexes:
+        5 element array containing following data under successive indexes:
             data_for_max_json - json containing stock data [open,close,min,max] for max years with period of 1 day
             news - newsfeed for given stock name
             info - various data for given stock
@@ -41,11 +42,12 @@ def get_data_for_ticker(ticker_name):
     yafi_ticker = yafi.Ticker(ticker_name)
     news = yafi_ticker.news
     info = yafi_ticker.info
+
     institutional_holders = yafi_ticker.institutional_holders
+    institutional_holders['Date Reported'] = institutional_holders['Date Reported'].dt.strftime('%Y-%m-%d')
+    institutional_holders.rename(columns = {'Date Reported': 'DateReported', '% Out': 'Out'}, inplace = True)
 
     list_of_ticker_data = [data_for_max_json,
-                           0,
-                           0,
                            news,
                            info,
                            institutional_holders,
@@ -58,6 +60,13 @@ def get_data_for_ticker(ticker_name):
         return None
 
 
+def get_values_for_liked_tickers(tickers_list):
+    ticker_string = " ".join(tickers_list)
+    data = yafi.download(ticker_string, period="1d", interval="1m")
+    data.sort_index
+    values_of_liked_tickers = data["Close"].tail(1).to_json(orient='records')[1:-1]
+    return values_of_liked_tickers
+
+
 if __name__ == "__main__":
     dane = get_data_for_ticker("AAPL")
-    print(dane[0])
