@@ -76,12 +76,14 @@ def liked(request):
     liked_tickers = [sym[0] for sym in
                      Like.objects.filter(author__username__contains=request.user.username).values_list("ticker")]
     if liked_tickers:
-        current_ticker_values = get_values_for_liked_tickers(liked_tickers)
+        change_of_liked_tickers, current_ticker_values = get_values_for_liked_tickers(liked_tickers)
     else:
         current_ticker_values = ""
+        change_of_liked_tickers = ""
     context = {
         'objects': Like.objects.filter(author=request.user.pk),
-        'liked_tickers_json': current_ticker_values
+        'liked_tickers_json': current_ticker_values,
+        'change_of_liked_tickers': change_of_liked_tickers
     }
     return render(request, 'search/user_likes.html', context)
 

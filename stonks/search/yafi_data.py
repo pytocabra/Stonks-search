@@ -62,10 +62,12 @@ def get_data_for_ticker(ticker_name):
 
 def get_values_for_liked_tickers(tickers_list):
     ticker_string = " ".join(tickers_list)
-    data = yafi.download(ticker_string, period="1d", interval="1m")
+    # data = yafi.download(ticker_string, period="1d", interval="1m")
+    data = yafi.download(ticker_string, period="2d", interval="1d")
     data.sort_index
     values_of_liked_tickers = data["Close"].tail(1).to_json(orient='records')[1:-1]
-    return values_of_liked_tickers
+    change_of_liked_tickers = data.pct_change()["Close"].tail(1).to_json(orient='records')[1:-1]
+    return values_of_liked_tickers, change_of_liked_tickers
 
 
 if __name__ == "__main__":
