@@ -75,7 +75,10 @@ def liked(request):
     """The view with liked stocks. Only for logged in users."""
     liked_tickers = [sym[0] for sym in
                      Like.objects.filter(author__username__contains=request.user.username).values_list("ticker")]
-    current_ticker_values = get_values_for_liked_tickers(liked_tickers)
+    if liked_tickers:
+        current_ticker_values = get_values_for_liked_tickers(liked_tickers)
+    else:
+        current_ticker_values = ""
     context = {
         'objects': Like.objects.filter(author=request.user.pk),
         'liked_tickers_json': current_ticker_values
