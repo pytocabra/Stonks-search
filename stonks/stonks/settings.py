@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yc%dbhzpwf5h*foz8$y#tsq01ezudg^r5p^$fz1+56!w&qm0ba
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'stonkdeploy.herokuapp.com'
+    'stormy-meadow-39808.herokuapp.com'
     '127.0.0.1', 
     'localhost'
 ]
