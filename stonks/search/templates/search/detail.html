@@ -4,9 +4,11 @@
 {% block body %}
     <div class="container">
         <main class="detailScreen">
-            <img class="detailScreen__logo" src="{{ info.logo_url }}" />
             <div class="detailScreen__topWrapper">
-                <h1 class="detailScreen__title">{{ longName }}</h1>
+                <div class="detailScreen__titleWrapper">
+                    <img class="detailScreen__logo" src="{{ info.logo_url }}" />
+                    <h1 class="detailScreen__title">{{ longName }}</h1>
+                </div>
 
                 {% if user.is_authenticated %}
 
@@ -145,7 +147,7 @@
                       {% for new in news %}
                         <div class="card mb-3">
                           <div class="card-body">
-                              <small>{{ new.publisher }} - {{new.providerPublishTime|date:"jS M Y"}}</small>
+                              <small>{{ new.publisher }}</small>
                               <span class="news__type">{{ new.type }}</span>
                               <a href="{{ new.link }}">
                                   <h5 class="card-title">{{ new.title }}</h5>
@@ -153,8 +155,6 @@
                           </div>
                         </div>
                       {% endfor %}
-
-                      <p>{{ news }}</p>
                   </div>
               </div>
 

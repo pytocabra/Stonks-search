@@ -128,11 +128,12 @@ nav {
       border: none; }
 
 .detailScreen__title {
-  margin-bottom: 30px; }
+  margin: 0; }
 .detailScreen__topWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin-bottom: 20px; }
   .detailScreen__topWrapper .like-icon {
     width: 35px;
     height: 35px;
@@ -141,10 +142,13 @@ nav {
       fill: #dc3545; }
     .detailScreen__topWrapper .like-icon__liked {
       fill: #dc3545; }
+.detailScreen__titleWrapper {
+  display: flex;
+  align-items: center; }
 .detailScreen__logo {
-  width: 100px;
+  width: 60px;
   height: auto;
-  margin-bottom: 10px; }
+  margin-right: 20px; }
 .detailScreen__chart {
   height: 0; }
 .detailScreen__summaryTables {

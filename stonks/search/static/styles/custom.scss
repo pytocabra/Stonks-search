@@ -169,12 +169,13 @@ nav {
 
 .detailScreen {
     &__title {
-        margin-bottom: 30px;
+        margin: 0;
     }
     &__topWrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 20px;
         .like-icon {
             width: 35px;
             height: 35px;
@@ -187,10 +188,14 @@ nav {
             }
         }
     }
+    &__titleWrapper {
+        display: flex;
+        align-items: center;
+    }
     &__logo {
-        width: 100px;
+        width: 60px;
         height: auto;
-        margin-bottom: 10px;
+        margin-right: 20px;
     }
     &__chart {
         height: 0;
