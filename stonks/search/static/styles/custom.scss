@@ -171,9 +171,6 @@ nav {
     &__title {
         margin-bottom: 30px;
     }
-    .nav-tabs {
-        margin-bottom: 20px;
-    }
     &__topWrapper {
         display: flex;
         align-items: center;
@@ -203,6 +200,28 @@ nav {
         justify-content: space-between;
         .table {
             max-width: 40%;
+        }
+    }
+
+    .news {
+        &__type {
+            display: block;
+            color: $blue;
+            font-size: 11px;
+        }
+        &__info {
+            font-size: 14px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .card-title {
+            color: $black;
+            font-weight: 500;
+            margin-top: 4px;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

@@ -129,8 +129,6 @@ nav {
 
 .detailScreen__title {
   margin-bottom: 30px; }
-.detailScreen .nav-tabs {
-  margin-bottom: 20px; }
 .detailScreen__topWrapper {
   display: flex;
   align-items: center;
@@ -154,6 +152,20 @@ nav {
   justify-content: space-between; }
   .detailScreen__summaryTables .table {
     max-width: 40%; }
+.detailScreen .news__type {
+  display: block;
+  color: #2962ff;
+  font-size: 11px; }
+.detailScreen .news__info {
+  font-size: 14px; }
+.detailScreen .news a {
+  text-decoration: none; }
+.detailScreen .news .card-title {
+  color: #000;
+  font-weight: 500;
+  margin-top: 4px; }
+  .detailScreen .news .card-title:hover {
+    text-decoration: underline; }
 
 .liked .card {
   transition: all 0.25s ease-in;

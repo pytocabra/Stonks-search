@@ -141,12 +141,19 @@
                 </div>
 
                   <div class="news">
-                      <h2>News</h2>
-{#                      <div class="news__item">#}
-{#                          <a href="{{ news[0].link }}">#}
-{#                              <h4>{{ news[0].title }}</h4>#}
-{#                          </a>#}
-{#                      </div>#}
+                      <h2 class="mb-3">News</h2>
+                      {% for new in news %}
+                        <div class="card mb-3">
+                          <div class="card-body">
+                              <small>{{ new.publisher }} - {{new.providerPublishTime|date:"jS M Y"}}</small>
+                              <span class="news__type">{{ new.type }}</span>
+                              <a href="{{ new.link }}">
+                                  <h5 class="card-title">{{ new.title }}</h5>
+                              </a>
+                          </div>
+                        </div>
+                      {% endfor %}
+
                       <p>{{ news }}</p>
                   </div>
               </div>
