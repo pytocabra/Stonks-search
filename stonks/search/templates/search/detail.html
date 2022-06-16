@@ -3,7 +3,7 @@
 {% block title %} Stock | {{ ticker }} {% endblock %}
 {% block body %}
     <div class="container">
-        <div class="detailScreen">
+        <main class="detailScreen">
             <img class="detailScreen__logo" src="{{ info.logo_url }}" />
             <div class="detailScreen__topWrapper">
                 <h1 class="detailScreen__title">{{ longName }}</h1>
@@ -57,10 +57,10 @@
               <div id="home" class="tab-pane fade show active">
                   <ul class="nav nav-tabs">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#candleChart" data-bs-toggle="tab">Candle</a>
+                        <a class="nav-link active" id="CandleSwitchBtn" aria-current="page" href="#candleChart" data-bs-toggle="tab">Candle</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#lineChart" data-bs-toggle="tab">Line</a>
+                        <a class="nav-link" id="LineSwitchBtn" href="#lineChart" data-bs-toggle="tab">Line</a>
                       </li>
                   </ul>
                   <div id="candleChart" class="detailScreen__chart tab-pane fade show active">
@@ -72,71 +72,83 @@
               </div>
 
               <div id="menu1" class="tab-pane fade">
-                <table class="table">
-                  <tbody>
-                    <tr scope="row">
-                      <th>Previous Close</th>
-                      <th> {{ info.previousClose  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Open</th>
-                      <th> {{ info.open  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Bid</th>
-                      <th> {{ info.bid  }} x {{ info.bidSize  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Ask</th>
-                      <th> {{ info.ask  }} x {{ info.askSize  }}</th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Day Range</th>
-                      <th> {{ info.dayLow  }} - {{ info.dayHigh  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Volume</th>
-                      <th> {{ info.volume  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Average Volume</th>
-                      <th> {{ info.averageVolume  }}</th>
-                    </tr> 
-                  </tbody>
-                </table>
+                <div class="detailScreen__summaryTables">
+                    <table class="table">
+                      <tbody>
+                        <tr scope="row">
+                          <th>Previous Close</th>
+                          <td> {{ info.previousClose  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Open</th>
+                          <td> {{ info.open  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Bid</th>
+                          <td> {{ info.bid  }} x {{ info.bidSize  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Ask</th>
+                          <td> {{ info.ask  }} x {{ info.askSize  }}</td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Day Range</th>
+                          <td> {{ info.dayLow  }} - {{ info.dayHigh  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Volume</th>
+                          <td> {{ info.volume  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Average Volume</th>
+                          <td> {{ info.averageVolume  }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-                <table class="table">
-                  <tbody>
-                    <tr scope="row">
-                      <th>Market Cap</th>
-                      <th> {{ info.marketCap  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Short Percent Of Float</th>
-                      <th> {{ info.shortPercentOfFloat }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Price/Ernings</th>
-                      <th> {{ info.forwardPE  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Ernings Per Share</th>
-                      <th> {{ info.forwardEps  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Book Value</th>
-                      <th> {{ info.bookValue  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Last Split Ratio</th>
-                      <th> {{ info.lastSplitFactor  }} </th>
-                    </tr> 
-                    <tr scope="row">
-                      <th>Website</th>
-                      <th> <a href="{{ info.website  }}">{{ info.website  }}</a> </th>
-                    </tr> 
-                  </tbody>
-                </table>
+                    <table class="table">
+                      <tbody>
+                        <tr scope="row">
+                          <th>Market Cap</th>
+                          <td> {{ info.marketCap  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Short Percent Of Float</th>
+                          <td> {{ info.shortPercentOfFloat }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Price/Ernings</th>
+                          <td> {{ info.forwardPE  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Ernings Per Share</th>
+                          <td> {{ info.forwardEps  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Book Value</th>
+                          <td> {{ info.bookValue  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Last Split Ratio</th>
+                          <td> {{ info.lastSplitFactor  }} </td>
+                        </tr>
+                        <tr scope="row">
+                          <th>Website</th>
+                          <td> <a href="{{ info.website  }}">{{ info.website  }}</a> </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+
+                  <div class="news">
+                      <h2>News</h2>
+{#                      <div class="news__item">#}
+{#                          <a href="{{ news[0].link }}">#}
+{#                              <h4>{{ news[0].title }}</h4>#}
+{#                          </a>#}
+{#                      </div>#}
+                      <p>{{ news }}</p>
+                  </div>
               </div>
 
               <div id="menu2" class="tab-pane fade">
@@ -169,7 +181,7 @@
             </div>
 
             
-        </div>
+        </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
@@ -187,7 +199,7 @@
           type: 'candlestick',
           height: 350,
           animations: {
-              enabled: false
+              enabled: true
           },
           zoom: {
             autoScaleYaxis: true
@@ -197,7 +209,6 @@
             size: 0,
         },
         title: {
-          text: 'Candle',
           align: 'left'
         },
         xaxis: {
@@ -207,6 +218,9 @@
           }
         },
         yaxis: {
+          labels: {
+              formatter: (value) => { return value.toFixed(2) }
+          },
           tooltip: {
             enabled: true
           }
@@ -218,8 +232,6 @@
                 }
             }
         }};
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
 
         var optionsLine = {
           series: [{
@@ -239,7 +251,6 @@
           curve: 'straight'
         },
         title: {
-          text: 'Line',
           align: 'left'
         },
         grid: {
@@ -250,17 +261,33 @@
         },
         xaxis: {
           type: 'datetime',
-        }
-        };
+        },
+        yaxis: {
+          labels: {
+              formatter: (value) => { return value.toFixed(2) }
+          }
+        }};
 
-        var chartLine = new ApexCharts(document.querySelector("#chartLine"), optionsLine);
 
         $(document).ready(function() {
+            let chart = new ApexCharts(document.querySelector("#chart"), options);
+            let chartLine = new ApexCharts(document.querySelector("#chartLine"), optionsLine);
             chart.render();
-            chartLine.render();
+
+            $('#CandleSwitchBtn').on('click', function () {
+                chartLine.destroy();
+                chart = new ApexCharts(document.querySelector("#chart"), options);
+                chart.render();
+            })
+
+            $('#LineSwitchBtn').on('click', function () {
+                chart.destroy();
+                chartLine = new ApexCharts(document.querySelector("#chartLine"), optionsLine);
+                chartLine.render();
+            })
         });
 
-        
+
     </script>
 
 {% endblock %}

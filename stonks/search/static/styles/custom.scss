@@ -198,6 +198,13 @@ nav {
     &__chart {
         height: 0;
     }
+    &__summaryTables {
+        display: flex;
+        justify-content: space-between;
+        .table {
+            max-width: 40%;
+        }
+    }
 }
 
 .liked {

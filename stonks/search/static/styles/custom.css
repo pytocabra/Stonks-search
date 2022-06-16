@@ -149,6 +149,11 @@ nav {
   margin-bottom: 10px; }
 .detailScreen__chart {
   height: 0; }
+.detailScreen__summaryTables {
+  display: flex;
+  justify-content: space-between; }
+  .detailScreen__summaryTables .table {
+    max-width: 40%; }
 
 .liked .card {
   transition: all 0.25s ease-in;
