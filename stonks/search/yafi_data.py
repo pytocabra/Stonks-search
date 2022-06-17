@@ -9,7 +9,7 @@ def format_for_graph(dataframe):
     dataframe.index = dataframe.index.astype(int) // 10 ** 9
     dataframe_to_dict_with_arrays = dataframe.T.to_dict('list')
     dataframe_to_json = pd.DataFrame.from_dict(dataframe_to_dict_with_arrays)
-    dataframe_to_json = dataframe_to_json.to_json()
+    dataframe_to_json = dataframe_to_json.round(2).to_json()
     return dataframe_to_json
 
 
@@ -34,10 +34,11 @@ def get_data_for_ticker(ticker_name):
         threads=True,
         proxy=None
     )
+    percent_date_change = data_for_max['Close'].pct_change().tail(1).to_json(orient='records')[1:-1]
 
     data_for_max_json = format_for_graph(data_for_max)
 
-    data_for_max_close_only_json = data_for_max['Close'].to_json
+    data_for_max_close_only_json = data_for_max['Close'].round(2).to_json
 
     yafi_ticker = yafi.Ticker(ticker_name)
     news = yafi_ticker.news
@@ -47,11 +48,14 @@ def get_data_for_ticker(ticker_name):
     institutional_holders['Date Reported'] = institutional_holders['Date Reported'].dt.strftime('%Y-%m-%d')
     institutional_holders.rename(columns = {'Date Reported': 'DateReported', '% Out': 'Out'}, inplace = True)
 
+
+
     list_of_ticker_data = [data_for_max_json,
                            news,
                            info,
                            institutional_holders,
                            data_for_max_close_only_json,
+                           percent_date_change
                            ]
 
     if not (data_for_max.empty):

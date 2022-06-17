@@ -33,6 +33,7 @@
         let availableTags = [
         {% for company in companies %}
             "{{company}}".replace("&amp;", "&"),
+            "{{company}}".replace("&#x27;", "\'"),
         {% endfor %}
         ];
         $( "#tags" ).autocomplete({
