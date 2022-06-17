@@ -50,6 +50,7 @@ def get_data_for_ticker(ticker_name):
 
     institutional_holders = yafi_ticker.institutional_holders
     institutional_holders['Date Reported'] = institutional_holders['Date Reported'].dt.strftime('%Y-%m-%d')
+    institutional_holders['% Out'] = institutional_holders['% Out'] * 100
     institutional_holders.rename(columns = {'Date Reported': 'DateReported', '% Out': 'Out'}, inplace = True)
 
 

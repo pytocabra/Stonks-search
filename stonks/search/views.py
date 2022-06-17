@@ -56,8 +56,8 @@ def detail(request, ticker):
                 'holders': json.loads(list_of_ticker_data[3].reset_index().to_json(orient ='records')),
                 'data_for_max_close_only': list_of_ticker_data[4],
                 'liked': is_liked,
-                'percent_date_change': list_of_ticker_data[5],
-                'yesterdays_close': list_of_ticker_data[6],
+                'percent_date_change': round(list_of_ticker_data[5]*100, 2),
+                'yesterdays_close': round(list_of_ticker_data[6], 2),
                 'is_rising': list_of_ticker_data[7]
             }
             return render(request, 'search/detail.html', context)

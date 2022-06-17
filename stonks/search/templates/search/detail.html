@@ -8,6 +8,17 @@
                 <div class="detailScreen__titleWrapper">
                     <img class="detailScreen__logo" src="{{ info.logo_url }}" />
                     <h1 class="detailScreen__title">{{ longName }}</h1>
+                    {% if is_rising %}
+                    <div class="mx-1"></div>
+                      <h2 class="mb-0">
+                        {{ yesterdays_close }}<span class="text-success">({{ percent_date_change }}%)</span>
+                      </h2> 
+                    {% else %}
+                    <div class="mx-1"></div>
+                      <h2 class="mb-0">
+                        {{ yesterdays_close }}<span class="text-danger">({{ percent_date_change }}%)</span>
+                      </h2> 
+                    {% endif %}
                 </div>
 
                 {% if user.is_authenticated %}
