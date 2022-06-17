@@ -22,7 +22,6 @@ def index(request):
     companies = [company[0] for company in companies]
     for i,s in enumerate(companies):
         companies[i] = mark_safe(s)
-    print(type(companies[0]))
 
     if request.method == 'POST':
         ticker = request.POST.get('search')  # get value of the search bar
@@ -56,7 +55,10 @@ def detail(request, ticker):
                 'info': list_of_ticker_data[2],
                 'holders': json.loads(list_of_ticker_data[3].reset_index().to_json(orient ='records')),
                 'data_for_max_close_only': list_of_ticker_data[4],
-                'liked': is_liked
+                'liked': is_liked,
+                'percent_date_change': list_of_ticker_data[5],
+                'yesterdays_close': list_of_ticker_data[6],
+                'is_rising': list_of_ticker_data[7]
             }
             return render(request, 'search/detail.html', context)
     except:

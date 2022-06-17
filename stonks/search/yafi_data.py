@@ -34,7 +34,11 @@ def get_data_for_ticker(ticker_name):
         threads=True,
         proxy=None
     )
-    percent_date_change = data_for_max['Close'].pct_change().tail(1).to_json(orient='records')[1:-1]
+    # percent_date_change = data_for_max['Close'].pct_change().tail(1).to_json(orient='records')[1:-1]
+    percent_date_change = data_for_max['Close'].pct_change().tail(1).iloc[0]
+    yesterdays_close = data_for_max['Close'].tail(1).iloc[0]
+    is_rising = True if data_for_max['Close'].pct_change().tail(1).iloc[0] > 0 else False
+    # print("Close: {}, Change: {}, Rising: {}".format(percent_date_change,yesterdays_close,is_rising))
 
     data_for_max_json = format_for_graph(data_for_max)
 
@@ -55,7 +59,9 @@ def get_data_for_ticker(ticker_name):
                            info,
                            institutional_holders,
                            data_for_max_close_only_json,
-                           percent_date_change
+                           percent_date_change,
+                           yesterdays_close,
+                           is_rising
                            ]
 
     if not (data_for_max.empty):
