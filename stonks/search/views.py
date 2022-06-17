@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
+
 from .models import Like, StockTickerData
 from .forms import UserRegisterForm
 
@@ -16,7 +18,11 @@ import json
 def index(request):
     """The main view with a search bar."""
     companies = StockTickerData.objects.values_list("longName")
+
     companies = [company[0] for company in companies]
+    for i,s in enumerate(companies):
+        companies[i] = mark_safe(s)
+    print(type(companies[0]))
 
     if request.method == 'POST':
         ticker = request.POST.get('search')  # get value of the search bar

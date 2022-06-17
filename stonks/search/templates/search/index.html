@@ -31,10 +31,9 @@
 <script>
     $( function() {
         let availableTags = [
-        {% for company in companies %}
-            "{{company}}".replace("&amp;", "&"),
-            "{{company}}".replace("&#x27;", "\'"),
-        {% endfor %}
+            {% for company in companies %}
+                "{{company}}",
+            {% endfor %}
         ];
         $( "#tags" ).autocomplete({
             source: availableTags
