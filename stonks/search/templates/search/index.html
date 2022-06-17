@@ -36,7 +36,8 @@
             {% endfor %}
         ];
         $( "#tags" ).autocomplete({
-            source: availableTags
+            source: availableTags,
+            autoFocus: true 
         });
     } );
 
